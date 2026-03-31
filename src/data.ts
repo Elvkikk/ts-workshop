@@ -36,7 +36,7 @@ export const potions = [
     id: "pot_2",
     name: "Fire Bomb",
     effect: "damage_fire",
-    hint: "Something burning and something that moves fast can become dangerous.",
+    hint: "Burning essence and explosive force create destruction.",
   },
   {
     id: "pot_3",
@@ -48,7 +48,7 @@ export const potions = [
     id: "pot_4",
     name: "Invisibility Potion",
     effect: "invisible",
-    hint: "What is light as air and hidden in shadow cannot easily be seen.",
+    hint: "Light fades when shadow and air combine.",
   },
   {
     id: "pot_5",
@@ -66,7 +66,7 @@ export const potions = [
     id: "pot_7",
     name: "Lightning Strike",
     effect: "damage_air",
-    hint: "Storms are born high above, where the sky gathers force.",
+    hint: "Storms are born from sky and surging energy.",
   },
   {
     id: "pot_8",
@@ -90,13 +90,13 @@ export const potions = [
 
 export const recipes = [
   { ingredients: ["ing_5", "ing_11"], result: "pot_1" },
-  { ingredients: ["ing_2", "ing_13"], result: "pot_2" },
+  { ingredients: ["ing_2", "ing_4"], result: "pot_2" },
   { ingredients: ["ing_6", "ing_9"], result: "pot_3" },
   { ingredients: ["ing_13", "ing_17"], result: "pot_4" },
-  { ingredients: ["ing_13", "ing_14"], result: "pot_5" },
-  { ingredients: ["ing_9", "ing_12"], result: "pot_6" },
-  { ingredients: ["ing_15", "ing_16"], result: "pot_7" },
-  { ingredients: ["ing_8", "ing_11"], result: "pot_8" },
-  { ingredients: ["ing_19", "ing_13"], result: "pot_9" },
-  { ingredients: ["ing_20", "ing_17"], result: "pot_10" },
+  { ingredients: ["ing_14", "ing_15"], result: "pot_5" },
+  { ingredients: ["ing_10", "ing_12"], result: "pot_6" },
+  { ingredients: ["ing_16", "ing_7"], result: "pot_7" },
+  { ingredients: ["ing_8", "ing_3"], result: "pot_8" },
+  { ingredients: ["ing_19", "ing_1"], result: "pot_9" },
+  { ingredients: ["ing_20", "ing_18"], result: "pot_10" },
 ];
