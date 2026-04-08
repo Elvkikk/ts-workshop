@@ -114,15 +114,84 @@ riverEssence.id = "ing_10";
 riverEssence.textContent = "River Essence";
 waterElement.appendChild(riverEssence);
 
-
 // Earth Element div
 const earthElement = document.createElement("div");
 earthElement.className = "element earth";
 earthElement.textContent = "Earth";
 divcontainer.appendChild(earthElement);
 
+// Stone Bark div inside Earth div with the same id as in the data.ts file
+const stoneBark = document.createElement("div");
+stoneBark.className = "element stone";
+stoneBark.id = "ing_11";
+stoneBark.textContent = "Stone Bark";
+earthElement.appendChild(stoneBark);
+
+// Moss Crystal div inside Earth div with the same id as in the data.ts file
+const mossCrystal = document.createElement("div");
+mossCrystal.className = "element moss";
+mossCrystal.id = "ing_12";
+mossCrystal.textContent = "Moss Crystal";
+earthElement.appendChild(mossCrystal);
+
+// Root Vine div inside Earth div with the same id as in the data.ts file
+const rootVine = document.createElement("div");
+rootVine.className = "element root";
+rootVine.id = "ing_13";
+rootVine.textContent = "Root Vine";
+earthElement.appendChild(rootVine);
+
+// Iron Seed div inside Earth div with the same id as in the data.ts file
+const ironSeed = document.createElement("div");
+ironSeed.className = "element iron";
+ironSeed.id = "ing_14";
+ironSeed.textContent = "Iron Seed";
+earthElement.appendChild(ironSeed);
+
+// Clay Core div inside Earth div with the same id as in the data.ts file
+const clayCore = document.createElement("div");
+clayCore.className = "element clay";
+clayCore.id = "ing_15";
+clayCore.textContent = "Clay Core";
+earthElement.appendChild(clayCore);
+
 // Air Element div   
 const airElement = document.createElement("div");
 airElement.className = "element air";
 airElement.textContent = "Air";
 divcontainer.appendChild(airElement);
+
+// Wind Feather div inside Air div with the same id as in the data.ts file
+const windFeather = document.createElement("div");
+windFeather.className = "element wind";
+windFeather.id = "ing_16";
+windFeather.textContent = "Wind Feather";
+airElement.appendChild(windFeather);
+
+// Sky Crystal div inside Air div with the same id as in the data.ts file
+const skyCrystal = document.createElement("div");
+skyCrystal.className = "element sky";
+skyCrystal.id = "ing_17";
+skyCrystal.textContent = "Sky Crystal";
+airElement.appendChild(skyCrystal);
+
+// Cloud Puff div inside Air div with the same id as in the data.ts file
+const cloudPuff = document.createElement("div");
+cloudPuff.className = "element cloud";
+cloudPuff.id = "ing_18";
+cloudPuff.textContent = "Cloud Puff";
+airElement.appendChild(cloudPuff);
+
+// Storm Shard div inside Air div with the same id as in the data.ts file
+const stormShard = document.createElement("div");
+stormShard.className = "element storm";
+stormShard.id = "ing_19";
+stormShard.textContent = "Storm Shard";
+airElement.appendChild(stormShard);
+
+// Gale Dust div inside Air div with the same id as in the data.ts file
+const galeDust = document.createElement("div");
+galeDust.className = "element gale";
+galeDust.id = "ing_20";
+galeDust.textContent = "Gale Dust";
+airElement.appendChild(galeDust);
