@@ -79,6 +79,40 @@ waterElement.className = "element water";
 waterElement.textContent = "Water";
 divcontainer.appendChild(waterElement);
 
+// Aqua Leaf div inside Water div with the same id as in the data.ts file
+const aquaLeaf = document.createElement("div");
+aquaLeaf.className = "element aqua";
+aquaLeaf.id = "ing_6";
+aquaLeaf.textContent = "Aqua Leaf";
+waterElement.appendChild(aquaLeaf);
+
+// Frost Berry div inside Water div with the same id as in the data.ts file
+const frostBerry = document.createElement("div");
+frostBerry.className = "element frost";
+frostBerry.id = "ing_7";
+frostBerry.textContent = "Frost Berry";
+waterElement.appendChild(frostBerry);
+
+// Mist Pearl div inside Water div with the same id as in the data.ts file
+const mistPearl = document.createElement("div");
+mistPearl.className = "element mist";
+mistPearl.id = "ing_8";
+mistPearl.textContent = "Mist Pearl";
+waterElement.appendChild(mistPearl);
+
+// Deep Sea Herb div inside Water div with the same id as in the data.ts file
+const deepSeaHerb = document.createElement("div");
+deepSeaHerb.className = "element deepsea";
+deepSeaHerb.id = "ing_9";
+deepSeaHerb.textContent = "Deep Sea Herb";
+waterElement.appendChild(deepSeaHerb);
+
+// River Essence div inside Water div with the same id as in the data.ts file
+const riverEssence = document.createElement("div");
+riverEssence.className = "element river";
+riverEssence.id = "ing_10";
+riverEssence.textContent = "River Essence";
+waterElement.appendChild(riverEssence);
 
 
 // Earth Element div
