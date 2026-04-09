@@ -12,7 +12,7 @@ const images: string[] = [
 ];
 
 // Index to keep track of the current image
-let currentIndex: number = 0;
+let currentIndex: number = 0; 
 const bgElement = document.createElement('div'); 
 bgElement.className = 'background';
 bgElement.id = 'bg-container';
@@ -23,7 +23,7 @@ function changeBackground(): void {
   // Apply the new image
   bgElement.style.backgroundImage = `url('${images[currentIndex]}')`;
 
-  // Move to the next index (image), or back to 0 (first image) if at the end
+  // Move to the next index (image), and back to 0 (first image) when the end is reached in the array of images
   currentIndex = (currentIndex + 1) % images.length;
 }
 
@@ -50,36 +50,66 @@ divcontainer.appendChild(fireElement);
 // Ember Root div inside Fire div with the same id as in the data.ts file
 const emberRoot = document.createElement("div");
 emberRoot.className = "element-ember";
-emberRoot.id = "ing_1";
-emberRoot.textContent = "Ember Root";
+
+// Ember Root button inside Ember Root div
+const emberBtn = document.createElement("button");
+emberBtn.textContent = "Ember Root";
+emberBtn.className = "ember-button";
+emberBtn.id = "ing_1";
+
+emberRoot.appendChild(emberBtn);
 fireElement.appendChild(emberRoot);
 
 // Blazing Petal div inside Fire div with the same id as in the data.ts file
 const blazingPetal = document.createElement("div");
 blazingPetal.className = "element-blazing";
-blazingPetal.id = "ing_2";
-blazingPetal.textContent = "Blazing Petal";
+
+// Blazing Petal button inside Blazing Petal div
+const blazingPetalBtn = document.createElement("button");
+blazingPetalBtn.textContent = "Blazing Petal";
+blazingPetalBtn.className = "blazing-button";
+blazingPetalBtn.id = "ing_2";
+
+blazingPetal.appendChild(blazingPetalBtn);
 fireElement.appendChild(blazingPetal);
 
 // Ash Mushroom div inside Fire div with the same id as in the data.ts file
 const ashMushroom = document.createElement("div");
 ashMushroom.className = "element-ash";
-ashMushroom.id = "ing_3";
-ashMushroom.textContent = "Ash Mushroom";
+
+// Ash Mushroom button inside Ash Mushroom div
+const ashMushroomBtn = document.createElement("button");
+ashMushroomBtn.textContent = "Ash Mushroom";
+ashMushroomBtn.className = "ash-button";
+ashMushroomBtn.id = "ing_3";
+
+ashMushroom.appendChild(ashMushroomBtn);
 fireElement.appendChild(ashMushroom);
 
 // Flame Dust div inside Fire div with the same id as in the data.ts file   
 const flameDust = document.createElement("div");
 flameDust.className = "element-flame";
-flameDust.id = "ing_4";
-flameDust.textContent = "Flame Dust";
+
+// Flame Dust button inside Flame Dust div
+const flameDustBtn = document.createElement("button");
+flameDustBtn.textContent = "Flame Dust";
+flameDustBtn.className = "flame-button";
+flameDustBtn.id = "ing_4";
+
+flameDust.appendChild(flameDustBtn);
 fireElement.appendChild(flameDust);
 
 // Cinder Shard div inside Fire div with the same id as in the data.ts file
 const cinderShard = document.createElement("div");
 cinderShard.className = "element-cinder";
-cinderShard.id = "ing_5";
-cinderShard.textContent = "Cinder Shard";
+
+// Cinder Shard button inside Cinder Shard div
+const cinderShardBtn = document.createElement("button");
+cinderShardBtn.textContent = "Cinder Shard";
+cinderShardBtn.className = "cinder-button";
+cinderShardBtn.id = "ing_5";
+
+cinderShard.appendChild(cinderShardBtn);
 fireElement.appendChild(cinderShard);
 
 // Water Element div
@@ -91,36 +121,66 @@ divcontainer.appendChild(waterElement);
 // Aqua Leaf div inside Water div with the same id as in the data.ts file
 const aquaLeaf = document.createElement("div");
 aquaLeaf.className = "element-aqua";
-aquaLeaf.id = "ing_6";
-aquaLeaf.textContent = "Aqua Leaf";
+
+// Aqua Leaf button inside Aqua Leaf div
+const aquaLeafBtn = document.createElement("button");
+aquaLeafBtn.textContent = "Aqua Leaf";
+aquaLeafBtn.className = "aqua-button";
+aquaLeafBtn.id = "ing_6";
+
+aquaLeaf.appendChild(aquaLeafBtn);
 waterElement.appendChild(aquaLeaf);
 
 // Frost Berry div inside Water div with the same id as in the data.ts file
 const frostBerry = document.createElement("div");
 frostBerry.className = "element-frost";
-frostBerry.id = "ing_7";
-frostBerry.textContent = "Frost Berry";
+
+// Frost Berry button inside Frost Berry div
+const frostBerryBtn = document.createElement("button");
+frostBerryBtn.textContent = "Frost Berry";
+frostBerryBtn.className = "frost-button";
+frostBerryBtn.id = "ing_7";
+
+frostBerry.appendChild(frostBerryBtn);
 waterElement.appendChild(frostBerry);
 
 // Mist Pearl div inside Water div with the same id as in the data.ts file
 const mistPearl = document.createElement("div");
 mistPearl.className = "element-mist";
-mistPearl.id = "ing_8";
-mistPearl.textContent = "Mist Pearl";
+
+// Mist Pearl button inside Mist Pearl div
+const mistPearlBtn = document.createElement("button");
+mistPearlBtn.textContent = "Mist Pearl";
+mistPearlBtn.className = "mist-button";
+mistPearlBtn.id = "ing_8";
+
+mistPearl.appendChild(mistPearlBtn);
 waterElement.appendChild(mistPearl);
 
 // Deep Sea Herb div inside Water div with the same id as in the data.ts file
 const deepSeaHerb = document.createElement("div");
 deepSeaHerb.className = "element-deepsea";
-deepSeaHerb.id = "ing_9";
-deepSeaHerb.textContent = "Deep Sea Herb";
+
+// Deep Sea Herb button inside Deep Sea Herb div
+const deepSeaHerbBtn = document.createElement("button");
+deepSeaHerbBtn.textContent = "Deep Sea Herb";
+deepSeaHerbBtn.className = "deepsea-button";
+deepSeaHerbBtn.id = "ing_9";
+
+deepSeaHerb.appendChild(deepSeaHerbBtn);
 waterElement.appendChild(deepSeaHerb);
 
 // River Essence div inside Water div with the same id as in the data.ts file
 const riverEssence = document.createElement("div");
 riverEssence.className = "element-river";
-riverEssence.id = "ing_10";
-riverEssence.textContent = "River Essence";
+
+// River Essence button inside River Essence div
+const riverEssenceBtn = document.createElement("button");
+riverEssenceBtn.textContent = "River Essence";
+riverEssenceBtn.className = "river-button";
+riverEssenceBtn.id = "ing_10";
+
+riverEssence.appendChild(riverEssenceBtn);
 waterElement.appendChild(riverEssence);
 
 // Earth Element div
@@ -132,36 +192,66 @@ divcontainer.appendChild(earthElement);
 // Stone Bark div inside Earth div with the same id as in the data.ts file
 const stoneBark = document.createElement("div");
 stoneBark.className = "element-stone";
-stoneBark.id = "ing_11";
-stoneBark.textContent = "Stone Bark";
+
+// Stone Bark button inside Stone Bark div
+const stoneBarkBtn = document.createElement("button");
+stoneBarkBtn.textContent = "Stone Bark";
+stoneBarkBtn.className = "stone-button";
+stoneBarkBtn.id = "ing_11";
+
+stoneBark.appendChild(stoneBarkBtn);
 earthElement.appendChild(stoneBark);
 
 // Moss Crystal div inside Earth div with the same id as in the data.ts file
 const mossCrystal = document.createElement("div");
 mossCrystal.className = "element-moss";
-mossCrystal.id = "ing_12";
-mossCrystal.textContent = "Moss Crystal";
+
+// Moss Crystal button inside Moss Crystal div
+const mossCrystalBtn = document.createElement("button");
+mossCrystalBtn.textContent = "Moss Crystal";
+mossCrystalBtn.className = "moss-button";
+mossCrystalBtn.id = "ing_12";
+
+mossCrystal.appendChild(mossCrystalBtn);
 earthElement.appendChild(mossCrystal);
 
 // Root Vine div inside Earth div with the same id as in the data.ts file
 const rootVine = document.createElement("div");
 rootVine.className = "element-root";
-rootVine.id = "ing_13";
-rootVine.textContent = "Root Vine";
+
+// Root Vine button inside Root Vine div
+const rootVineBtn = document.createElement("button");
+rootVineBtn.textContent = "Root Vine";
+rootVineBtn.className = "root-button";
+rootVineBtn.id = "ing_13";
+
+rootVine.appendChild(rootVineBtn);
 earthElement.appendChild(rootVine);
 
 // Iron Seed div inside Earth div with the same id as in the data.ts file
 const ironSeed = document.createElement("div");
 ironSeed.className = "element-iron";
-ironSeed.id = "ing_14";
-ironSeed.textContent = "Iron Seed";
+
+// Iron Seed button inside Iron Seed div
+const ironSeedBtn = document.createElement("button");
+ironSeedBtn.textContent = "Iron Seed";
+ironSeedBtn.className = "iron-button";
+ironSeedBtn.id = "ing_14";
+
+ironSeed.appendChild(ironSeedBtn);
 earthElement.appendChild(ironSeed);
 
 // Clay Core div inside Earth div with the same id as in the data.ts file
 const clayCore = document.createElement("div");
 clayCore.className = "element-clay";
-clayCore.id = "ing_15";
-clayCore.textContent = "Clay Core";
+
+// Clay Core button inside Clay Core div
+const clayCoreBtn = document.createElement("button");
+clayCoreBtn.textContent = "Clay Core";
+clayCoreBtn.className = "clay-button";
+clayCoreBtn.id = "ing_15";
+
+clayCore.appendChild(clayCoreBtn);
 earthElement.appendChild(clayCore);
 
 // Air Element div   
@@ -173,35 +263,65 @@ divcontainer.appendChild(airElement);
 // Wind Feather div inside Air div with the same id as in the data.ts file
 const windFeather = document.createElement("div");
 windFeather.className = "element-wind";
-windFeather.id = "ing_16";
-windFeather.textContent = "Wind Feather";
+
+// Wind Feather button inside Wind Feather div
+const windBtn = document.createElement("button");
+windBtn.textContent = "Wind Feather";
+windBtn.className = "wind-button";
+windBtn.id = "ing_16";
+
+windFeather.appendChild(windBtn);
 airElement.appendChild(windFeather);
 
 // Sky Crystal div inside Air div with the same id as in the data.ts file
 const skyCrystal = document.createElement("div");
 skyCrystal.className = "element-sky";
-skyCrystal.id = "ing_17";
-skyCrystal.textContent = "Sky Crystal";
+
+// Sky Crystal button inside Sky Crystal div
+const skyBtn = document.createElement("button");
+skyBtn.textContent = "Sky Crystal";
+skyBtn.className = "sky-button";
+skyBtn.id = "ing_17";
+
+skyCrystal.appendChild(skyBtn);
 airElement.appendChild(skyCrystal);
 
 // Cloud Puff div inside Air div with the same id as in the data.ts file
 const cloudPuff = document.createElement("div");
 cloudPuff.className = "element-cloud";
-cloudPuff.id = "ing_18";
-cloudPuff.textContent = "Cloud Puff";
+
+// Cloud Puff button inside Cloud Puff div
+const cloudBtn = document.createElement("button");
+cloudBtn.textContent = "Cloud Puff";
+cloudBtn.className = "cloud-button";
+cloudBtn.id = "ing_18";
+
+cloudPuff.appendChild(cloudBtn);
 airElement.appendChild(cloudPuff);
 
 // Storm Shard div inside Air div with the same id as in the data.ts file
 const stormShard = document.createElement("div");
 stormShard.className = "element-storm";
-stormShard.id = "ing_19";
-stormShard.textContent = "Storm Shard";
+
+// Storm Shard button inside Storm Shard div
+const stormBtn = document.createElement("button");
+stormBtn.textContent = "Storm Shard";
+stormBtn.className = "storm-button";
+stormBtn.id = "ing_19";
+
+stormShard.appendChild(stormBtn);
 airElement.appendChild(stormShard);
 
 // Gale Dust div inside Air div with the same id as in the data.ts file
 const galeDust = document.createElement("div");
 galeDust.className = "element-gale";
-galeDust.id = "ing_20";
-galeDust.textContent = "Gale Dust";
+
+// Gale Dust button inside Gale Dust div
+const galeBtn = document.createElement("button");
+galeBtn.textContent = "Gale Dust";
+galeBtn.className = "gale-button";
+galeBtn.id = "ing_20";
+
+galeDust.appendChild(galeBtn);
 airElement.appendChild(galeDust);
 
