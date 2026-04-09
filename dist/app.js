@@ -1,8 +1,35 @@
+// Background image rotation
+const images = [
+    '../src/img/3cw5Fn.webp',
+    '../src/img/12109826-air-wallpaper.jpg',
+    '../src/img/abstract-orange-smoke-and-red-fire-flies-in-waves-and-flying-particles-bright-glowing-sparks-with-blur-effect-abstract-background-in-high-quality-4k-motion-design-video.jpg',
+    '../src/img/download.jpeg',
+    '../src/img/earth-galaxy-elements-this-image-furnished-by-nasa_335224-750.avif',
+    '../src/img/images.jpeg',
+    '../src/img/water-wave-macro-photography-144238.jpeg'
+];
+// Index to keep track of the current image
+let currentIndex = 0;
+const bgElement = document.createElement('div');
+bgElement.className = 'background';
+bgElement.id = 'bg-container';
+document.body.appendChild(bgElement);
+// Function to change the background image
+function changeBackground() {
+    // Apply the new image
+    bgElement.style.backgroundImage = `url('${images[currentIndex]}')`;
+    // Move to the next index (image), or back to 0 (first image) if at the end
+    currentIndex = (currentIndex + 1) % images.length;
+}
+// Initial call to set the first image
+changeBackground();
+// Set the interval (e.g., 5000ms = 5 seconds)
+setInterval(changeBackground, 10000);
 // Divcontainer for the potion crafting interface
 const divcontainer = document.createElement("div");
 divcontainer.className = "container";
 divcontainer.id = "potion-container";
-document.body.appendChild(divcontainer);
+bgElement.appendChild(divcontainer);
 // Create elements for each ingredient and potion
 // Fire Element div
 const fireElement = document.createElement("div");
