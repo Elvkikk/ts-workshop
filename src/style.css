@@ -1,0 +1,100 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 20px;
+}
+
+.element-fire {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  border-radius: 50%;
+  animation: fireAnimation 1s infinite;
+}
+
+@keyframes fireAnimation {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.element-water {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+  border-radius: 50%;
+  animation: waterAnimation 1s infinite;
+}
+
+@keyframes waterAnimation {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes earthAnimation {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.element-earth {
+  width: 100px;
+  height: 100px;
+  background-color: green;
+  border-radius: 50%;
+  animation: earthAnimation 1s infinite;
+}
+
+.element-air {
+  width: 100px;
+  height: 100px;
+  background-color: lightgray;
+  border-radius: 50%;
+  animation: airAnimation 1s infinite;
+}
+
+@keyframes airAnimation {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
