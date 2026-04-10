@@ -481,13 +481,13 @@ function renderPotionResult(): void {
     valueElement.textContent = "Ingen potion hittades.";
     return;
   }
-//
+// Find the potion that corresponds to the matched recipe
   const matchedPotion = potions.find((potion) => potion.id === matchedRecipe.result);
   if (!matchedPotion) {
     valueElement.textContent = "Recepten matchar ingen känd potion.";
     return;
   }
-
+// Display the potion's name, effect, and hint, and show the corresponding image if available
   const potionImageSrc = potionImageById[matchedPotion.id];
   if (potionImageSrc) {
     const potionImage = document.createElement("img");
@@ -501,7 +501,7 @@ function renderPotionResult(): void {
     fallbackText.textContent = "Ingen bild tillganglig for denna potion.";
     imgDiv.appendChild(fallbackText);
   }
-
+// Create a description div to display the potion's name, effect, and hint
   const descriptionDiv = document.createElement("div");
   descriptionDiv.className = "potion-description";
   descriptionDiv.appendChild(createLabeledValueRow("Name", matchedPotion.name));
@@ -537,7 +537,7 @@ function attachIngredientEvents(): void {
       handleIngredientClick(button.id);
     });
   });
-
+// Attach click event listener to the clear selection button
   clearSelectionBtn.addEventListener("click", clearSelection);
 }
 
