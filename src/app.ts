@@ -1,14 +1,14 @@
-import {ingredients, potions, recipes,} from "./data";
-
+import { ingredients, potions, recipes } from "./data.js";
+/*
 // Background image rotation
 const images: string[] = [
-  '../src/img/3cw5Fn.webp',
-  '../src/img/12109826-air-wallpaper.jpg',
-  '../src/img/abstract-orange-smoke-and-red-fire-flies-in-waves-and-flying-particles-bright-glowing-sparks-with-blur-effect-abstract-background-in-high-quality-4k-motion-design-video.jpg',
-  '../src/img/download.jpeg',
-  '../src/img/earth-galaxy-elements-this-image-furnished-by-nasa_335224-750.avif',
-  '../src/img/images.jpeg',
-  '../src/img/water-wave-macro-photography-144238.jpeg'
+  './src/img/3cw5Fn.webp',
+  './src/img/12109826-air-wallpaper.jpg',
+  './src/img/abstract-orange-smoke-and-red-fire-flies-in-waves-and-flying-particles-bright-glowing-sparks-with-blur-effect-abstract-background-in-high-quality-4k-motion-design-video.jpg',
+  './src/img/download.jpeg',
+  './src/img/earth-galaxy-elements-this-image-furnished-by-nasa_335224-750.avif',
+  './src/img/images.jpeg',
+  './src/img/water-wave-macro-photography-144238.jpeg'
 ];
 
 // Index to keep track of the current image
@@ -32,12 +32,12 @@ changeBackground();
 
 // Set the interval (e.g., 5000ms = 5 seconds)
 setInterval(changeBackground, 10000);
-
+*/
 // Divcontainer for the potion crafting interface
 const divcontainer = document.createElement("div");
 divcontainer.className = "container";
 divcontainer.id = "potion-container";
-bgElement.appendChild(divcontainer);
+document.body.appendChild(divcontainer);
 
 // Create elements for each ingredient and potion
 
@@ -324,4 +324,112 @@ galeBtn.id = "ing_20";
 
 galeDust.appendChild(galeBtn);
 airElement.appendChild(galeDust);
+
+const selectionWrapper = document.createElement("div");
+selectionWrapper.className = "selection-wrapper";
+document.body.appendChild(selectionWrapper);
+
+const ingredientsRow = document.createElement("div");
+ingredientsRow.className = "ingredients-row";
+selectionWrapper.appendChild(ingredientsRow);
+
+const firstIng= document.createElement("div");
+firstIng.className = "first-ing";
+firstIng.id = "first-ing";
+ingredientsRow.appendChild(firstIng);
+
+const secondIng= document.createElement("div");
+secondIng.className = "second-ing";
+secondIng.id = "second-ing";
+ingredientsRow.appendChild(secondIng);
+
+const potionResult= document.createElement("div");
+potionResult.className = "potion-result";
+potionResult.id = "potion-result";
+selectionWrapper.appendChild(potionResult);
+
+const selectedIngredientIds: string[] = [];
+
+function renderSelection(): void {
+  const firstIngredient = selectedIngredientIds[0]
+    ? ingredients.find((ingredient) => ingredient.id === selectedIngredientIds[0])
+    : null;
+  const secondIngredient = selectedIngredientIds[1]
+    ? ingredients.find((ingredient) => ingredient.id === selectedIngredientIds[1])
+    : null;
+
+  firstIng.textContent = firstIngredient
+    ? `First ingredient: ${firstIngredient.name}`
+    : "First ingredient: (none)";
+  secondIng.textContent = secondIngredient
+    ? `Second ingredient: ${secondIngredient.name}`
+    : "Second ingredient: (none)";
+}
+
+function renderPotionResult(): void {
+  potionResult.innerHTML = ""; 
+
+  // Check if two ingredients are selected
+  if (selectedIngredientIds.length < 2) {
+    potionResult.textContent = "Välj 2 ingredienser.";
+    return;
+  }
+
+  const selected = [...selectedIngredientIds].sort();
+  const matchedRecipe = recipes.find((recipe) => {
+    const recipeIngredients = [...recipe.ingredients].sort();
+    return (
+      recipeIngredients.length === selected.length
+      && recipeIngredients.every((ingredientId, index) => ingredientId === selected[index])
+    );
+  });
+
+  if (!matchedRecipe) {
+    potionResult.textContent = "Ingen potion hittades.";
+    return;
+  }
+
+  const matchedPotion = potions.find((potion) => potion.id === matchedRecipe.result);
+  if (!matchedPotion) {
+    potionResult.textContent = "Recept hittades, men potiondata saknas.";
+    return;
+  }
+
+  const potionName = document.createElement("h3");
+  potionName.textContent = matchedPotion.name;
+
+  const potionEffect = document.createElement("p");
+  potionEffect.textContent = `Effekt: ${matchedPotion.effect}`;
+
+  const potionHint = document.createElement("p");
+  potionHint.textContent = matchedPotion.hint;
+
+  potionResult.appendChild(potionName);
+  potionResult.appendChild(potionEffect);
+  potionResult.appendChild(potionHint);
+}
+
+function handleIngredientClick(ingredientId: string): void {
+  if (selectedIngredientIds.length === 2) {
+    selectedIngredientIds.length = 0;
+  }
+
+  selectedIngredientIds.push(ingredientId);
+  renderSelection();
+  renderPotionResult();
+}
+
+function attachIngredientEvents(): void {
+  const ingredientButtons = divcontainer.querySelectorAll<HTMLButtonElement>("button[id^='ing_']");
+  ingredientButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      handleIngredientClick(button.id);
+    });
+  });
+}
+
+renderSelection();
+renderPotionResult();
+attachIngredientEvents();
+
 
