@@ -274,11 +274,71 @@ const secondIng = document.createElement("div");
 secondIng.className = "second-ing";
 secondIng.id = "second-ing";
 ingredientsRow.appendChild(secondIng);
+const imgDiv = document.createElement("div");
+imgDiv.id = "imgDiv";
+imgDiv.className = "potion-img-div";
+selectionWrapper.appendChild(imgDiv);
 const potionResult = document.createElement("div");
 potionResult.className = "potion-result";
 potionResult.id = "potion-result";
 selectionWrapper.appendChild(potionResult);
+// Clear selection button
+const clearSelectionBtn = document.createElement("button");
+clearSelectionBtn.className = "clear-selection-button";
+clearSelectionBtn.id = "clear-selection-button";
+clearSelectionBtn.textContent = "Clear";
+selectionWrapper.appendChild(clearSelectionBtn);
+// Array to keep track of selected ingredient IDs
 const selectedIngredientIds = [];
+const potionImageById = {
+    pot_1: "./src/img/healing.png",
+    pot_2: "./src/img/fire.png",
+    pot_3: "./src/img/frost.png",
+    pot_4: "./src/img/invisibility.png",
+    pot_5: "./src/img/elixir.png",
+    pot_6: "./src/img/stone.png",
+    pot_7: "./src/img/srtike.png",
+    pot_8: "./src/img/regeneration.png",
+    pot_9: "./src/img/burst.png",
+    pot_10: "./src/img/burst.png",
+};
+// Function to render an ingredient slot with a label and value
+function renderIngredientSlot(container, label, value) {
+    container.innerHTML = "";
+    const labelElement = document.createElement("span");
+    labelElement.className = "selection-label";
+    labelElement.textContent = label;
+    const valueElement = document.createElement("span");
+    valueElement.className = "selection-value";
+    valueElement.textContent = value;
+    container.appendChild(labelElement);
+    container.appendChild(valueElement);
+}
+function createPotionResultLayout(label) {
+    potionResult.innerHTML = "";
+    const labelElement = document.createElement("div");
+    labelElement.className = "potion-result-label";
+    labelElement.textContent = label;
+    const valueElement = document.createElement("div");
+    valueElement.className = "potion-result-value";
+    potionResult.appendChild(labelElement);
+    potionResult.appendChild(valueElement);
+    return valueElement;
+}
+// Function to create a labeled value row for potion details
+function createLabeledValueRow(label, value) {
+    const row = document.createElement("p");
+    row.className = "potion-detail-row";
+    const labelElement = document.createElement("span");
+    labelElement.className = "potion-detail-label";
+    labelElement.textContent = `${label}: `;
+    const valueElement = document.createElement("span");
+    valueElement.className = "potion-detail-value";
+    valueElement.textContent = value;
+    row.appendChild(labelElement);
+    row.appendChild(valueElement);
+    return row;
+}
 // Function to render the selected ingredients
 function renderSelection() {
     const firstIngredient = selectedIngredientIds[0]
@@ -287,52 +347,69 @@ function renderSelection() {
     const secondIngredient = selectedIngredientIds[1]
         ? ingredients.find((ingredient) => ingredient.id === selectedIngredientIds[1])
         : null;
-    firstIng.textContent = firstIngredient
-        ? `First ingredient: ${firstIngredient.name}`
-        : "First ingredient: (none)";
-    secondIng.textContent = secondIngredient
-        ? `Second ingredient: ${secondIngredient.name}`
-        : "Second ingredient: (none)";
+    renderIngredientSlot(firstIng, "Första ingrediens", firstIngredient ? firstIngredient.name : "Inga val ännu");
+    renderIngredientSlot(secondIng, "Andra ingrediens", secondIngredient ? secondIngredient.name : "Inga val ännu");
+    // Enable or disable the clear selection button based on whether any ingredients are selected
+    clearSelectionBtn.disabled = selectedIngredientIds.length === 0;
 }
 // Function to render the potion result based on selected ingredients
 function renderPotionResult() {
-    potionResult.innerHTML = "";
+    const valueElement = createPotionResultLayout("Potionresultat");
+    imgDiv.innerHTML = "";
     // Check if two ingredients are selected
     if (selectedIngredientIds.length < 2) {
-        potionResult.textContent = "Välj 2 ingredienser.";
+        valueElement.textContent = "Inga valda ingredienser. Välj två ingredienser för att se resultatet.";
         return;
     }
-    const selected = [...selectedIngredientIds].sort();
+    // Find a matching recipe based on the selected ingredient IDs
+    const selected = [...selectedIngredientIds].sort(); // Sort the selected ingredient IDs to ensure order doesn't affect matching
     const matchedRecipe = recipes.find((recipe) => {
         const recipeIngredients = [...recipe.ingredients].sort();
         return (recipeIngredients.length === selected.length
             && recipeIngredients.every((ingredientId, index) => ingredientId === selected[index]));
     });
     if (!matchedRecipe) {
-        potionResult.textContent = "Ingen potion hittades.";
+        valueElement.textContent = "Ingen potion hittades.";
         return;
     }
     const matchedPotion = potions.find((potion) => potion.id === matchedRecipe.result);
     if (!matchedPotion) {
-        potionResult.textContent = "Recept hittades, men potiondata saknas.";
+        valueElement.textContent = "Recepten matchar ingen känd potion.";
         return;
     }
-    const potionName = document.createElement("h3");
-    potionName.textContent = matchedPotion.name;
-    const potionEffect = document.createElement("p");
-    potionEffect.textContent = `Effekt: ${matchedPotion.effect}`;
-    const potionHint = document.createElement("p");
-    potionHint.textContent = matchedPotion.hint;
-    potionResult.appendChild(potionName);
-    potionResult.appendChild(potionEffect);
-    potionResult.appendChild(potionHint);
+    const potionImageSrc = potionImageById[matchedPotion.id];
+    if (potionImageSrc) {
+        const potionImage = document.createElement("img");
+        potionImage.className = "potion-image";
+        potionImage.src = potionImageSrc;
+        potionImage.alt = matchedPotion.name;
+        imgDiv.appendChild(potionImage);
+    }
+    else {
+        const fallbackText = document.createElement("p");
+        fallbackText.className = "potion-image-fallback";
+        fallbackText.textContent = "Ingen bild tillganglig for denna potion.";
+        imgDiv.appendChild(fallbackText);
+    }
+    const descriptionDiv = document.createElement("div");
+    descriptionDiv.className = "potion-description";
+    descriptionDiv.appendChild(createLabeledValueRow("Name", matchedPotion.name));
+    descriptionDiv.appendChild(createLabeledValueRow("Effect", matchedPotion.effect));
+    descriptionDiv.appendChild(createLabeledValueRow("Hint", matchedPotion.hint));
+    valueElement.appendChild(descriptionDiv);
 }
 // Function to handle ingredient button clicks
 function handleIngredientClick(ingredientId) {
     if (selectedIngredientIds.length === 2) {
-        selectedIngredientIds.length = 0;
+        return;
     }
     selectedIngredientIds.push(ingredientId);
+    renderSelection();
+    renderPotionResult();
+}
+// Function to clear the selected ingredients and reset the display
+function clearSelection() {
+    selectedIngredientIds.length = 0;
     renderSelection();
     renderPotionResult();
 }
@@ -344,6 +421,7 @@ function attachIngredientEvents() {
             handleIngredientClick(button.id);
         });
     });
+    clearSelectionBtn.addEventListener("click", clearSelection);
 }
 renderSelection();
 renderPotionResult();
