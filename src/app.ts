@@ -325,6 +325,7 @@ galeBtn.id = "ing_20";
 galeDust.appendChild(galeBtn);
 airElement.appendChild(galeDust);
 
+// Selection and result display elements
 const selectionWrapper = document.createElement("div");
 selectionWrapper.className = "selection-wrapper";
 document.body.appendChild(selectionWrapper);
@@ -350,6 +351,7 @@ selectionWrapper.appendChild(potionResult);
 
 const selectedIngredientIds: string[] = [];
 
+// Function to render the selected ingredients
 function renderSelection(): void {
   const firstIngredient = selectedIngredientIds[0]
     ? ingredients.find((ingredient) => ingredient.id === selectedIngredientIds[0])
@@ -366,6 +368,7 @@ function renderSelection(): void {
     : "Second ingredient: (none)";
 }
 
+// Function to render the potion result based on selected ingredients
 function renderPotionResult(): void {
   potionResult.innerHTML = ""; 
 
@@ -409,6 +412,7 @@ function renderPotionResult(): void {
   potionResult.appendChild(potionHint);
 }
 
+// Function to handle ingredient button clicks
 function handleIngredientClick(ingredientId: string): void {
   if (selectedIngredientIds.length === 2) {
     selectedIngredientIds.length = 0;
@@ -419,8 +423,9 @@ function handleIngredientClick(ingredientId: string): void {
   renderPotionResult();
 }
 
+// Attach click event listeners to all ingredient buttons
 function attachIngredientEvents(): void {
-  const ingredientButtons = divcontainer.querySelectorAll<HTMLButtonElement>("button[id^='ing_']");
+  const ingredientButtons = divcontainer.querySelectorAll<HTMLButtonElement>("button[id^='ing_']"); // Select all buttons with ids starting with "ing_"
   ingredientButtons.forEach((button) => {
     button.addEventListener("click", () => {
       handleIngredientClick(button.id);

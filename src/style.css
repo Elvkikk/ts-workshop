@@ -22,6 +22,16 @@ body {
   padding-top: 20px;
 }
 
+.element-air, .element-earth, .element-fire, .element-water {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 10px;
+  flex-direction: column;
+  opacity: 0.9;
+}
 .element-fire {
   width: 150px;
   height: 150px;
@@ -55,6 +65,21 @@ body {
   background-color: gray;
 }
 
+button[id^='ing_'] {
+  border-radius: 5px;
+  border: none;
+  background-color: whitesmoke;
+  cursor: pointer;
+  font-size: 14px;
+  transition: transform .2s; /* Animation */
+}
+
+button[id^='ing_']:hover {
+  background: linear-gradient(45deg, rgb(224, 148, 41), rgb(20, 214, 175));
+  color: black;
+  transform: scale(1.05);
+}
+
 .selection-wrapper {
   display: flex;
   flex-direction: column;
@@ -72,19 +97,21 @@ body {
 
 .first-ing, .second-ing {
   width: 150px;
-  height: 150px;
+  height: 80px;
+  border-radius: 10px;
   border: 2px solid black;
   background-color: blueviolet;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 14px;
+  opacity: 0.9;
 }
 
 
 .potion-result { 
   width: 320px;
-  height: 150px;
+  height: 100px;
   border-radius: 10px;
   border: 2px solid black;
   background-color: rosybrown;
@@ -93,4 +120,5 @@ body {
   justify-content: center;
   font-size: 14px;
   margin: 0 auto;
+  opacity: 0.9;
 }
