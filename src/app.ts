@@ -481,7 +481,7 @@ function renderPotionResult(): void {
     valueElement.textContent = "Ingen potion hittades.";
     return;
   }
-
+//
   const matchedPotion = potions.find((potion) => potion.id === matchedRecipe.result);
   if (!matchedPotion) {
     valueElement.textContent = "Recepten matchar ingen känd potion.";
